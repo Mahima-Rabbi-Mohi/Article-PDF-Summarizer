@@ -11,9 +11,9 @@ Tkinter is the standard GUI library for Python. To know more about this, please 
 
 * Created GUI (Graphical User Interface) using Tkinter
 * Used Python libraries TextBlob and Newspaper3k for processing textual data and Web Scraping articles
-* Generated title, author, publication date, summary and sentiment analysis polarity score from an URL
-* Extracted information from uploaded PDF documents using PDFMiner and sumarized it
-* Summary of any given text can be generated with pre-trained T5 model
+* Generated title, author, publication date, summary, and sentiment analysis polarity score from an URL
+* Extracted information from uploaded PDF documents using PDFMiner and summarized it
+* A summary of any given text can be generated with a pre-trained T5 model
 
 
 # Demo video :
