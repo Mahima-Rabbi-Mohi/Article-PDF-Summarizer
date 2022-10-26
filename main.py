@@ -1,7 +1,5 @@
 import tkinter as tk
 from tkinter import filedialog
-import PyPDF2
-from matplotlib.dviread import Page
 from tkPDFViewer import tkPDFViewer as pdf
 
 import nltk
@@ -10,6 +8,8 @@ from newspaper import Article
 from pdfminer.high_level import extract_text
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
+
+import summary_help
 
 nltk.download('punkt') # for sentiment analysis
 nltk.download('stopwords') # for initializing stopwords
@@ -81,10 +81,6 @@ def summarize_url():
     summary.delete('1.0','end')
     summary.insert('1.0', article.summary or 'None')
 
-    # To get summary from summary_help.py
-    # summary.delete('1.0','end')
-    # summary.insert('1.0', summary_help.summary_main(article.text) or 'None')
-
     # print sentiment_analysis
     analysis= TextBlob(article.text)
     sent_analysis.delete('1.0','end')
@@ -100,45 +96,45 @@ def summarize_url():
     btn= tk.Button(root, text="Full Article", bg='#192c3a', fg="#aeaeb0", command=show_full_text_url)
     btn.pack()
 
-def summarize_pdf(text):
+# def summarize_pdf(text):
     
-    words = word_tokenize(text)
-    freqTable = dict()
+#     words = word_tokenize(text)
+#     freqTable = dict()
 
-    for word in words:
-        word=word.lower()
-        if word in stopwords:
-            continue
-        if word in freqTable:
-            freqTable[word]+=1
-        else:
-            freqTable[word]=1
+#     for word in words:
+#         word=word.lower()
+#         if word in stopwords:
+#             continue
+#         if word in freqTable:
+#             freqTable[word]+=1
+#         else:
+#             freqTable[word]=1
         
-    sentences = sent_tokenize(text)
-    sentenceValue = dict()
+#     sentences = sent_tokenize(text)
+#     sentenceValue = dict()
 
-    for sentence in sentences:
-        for word,freq in freqTable.items():
-            if word in sentence.lower():
-                if sentence in sentenceValue:
-                    sentenceValue[sentence]+=1
-                else:
-                    sentenceValue[sentence]= freq
+#     for sentence in sentences:
+#         for word,freq in freqTable.items():
+#             if word in sentence.lower():
+#                 if sentence in sentenceValue:
+#                     sentenceValue[sentence]+=1
+#                 else:
+#                     sentenceValue[sentence]= freq
 
 
-    sumValues = 0
-    for sentence in sentenceValue:
-        sumValues += sentenceValue[sentence]
+#     sumValues = 0
+#     for sentence in sentenceValue:
+#         sumValues += sentenceValue[sentence]
 
-    average = int(sumValues / len(sentenceValue))
+#     average = int(sumValues / len(sentenceValue))
 
-    summary= ''
+#     summary= ''
 
-    for sentence in sentences:
-        if (sentence in sentenceValue) and (sentenceValue[sentence]> (1.2 * average)):
-            summary+= " "+ sentence
+#     for sentence in sentences:
+#         if (sentence in sentenceValue) and (sentenceValue[sentence]> (1.2 * average)):
+#             summary+= " "+ sentence
 
-    return summary
+#     return summary
 
 
 def browseFiles():
@@ -153,7 +149,8 @@ def browseFiles():
         
         text = extract_text(file)
 
-        pdf_summary= summarize_pdf(text)
+#         pdf_summary= summarize_pdf(text)
+        pdf_summary= summary_help.summary_main(text)
 
         ptlabel= tk.Label(proot, text="PDF Summarizer", bg='#192c3a', fg="#aeaeb0", font=("Arial, 16"))
         ptlabel.pack()
