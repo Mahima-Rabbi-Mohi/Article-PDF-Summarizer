@@ -1,4 +1,4 @@
-# Password Protected PDF generator and Summarizer
+# Password Protected PDF Generator and Summarizer
 
 To ensure data privacy, this project has made it easier and inexpensive to generate and encrypt PDF files. It can initially provide a summary of an article from a Webpage or PDF. However, PDFs can also be downloaded utilizing encryption. Before a PDF document can be viewed in Adobe Reader or Adobe Acrobat, the user must provide the accessible password when it has been encrypted.
 
