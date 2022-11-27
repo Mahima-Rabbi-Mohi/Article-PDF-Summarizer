@@ -18,7 +18,7 @@ stopwords = set (stopwords.words("english"))
 
 root= tk.Tk()
 root.title("Article | PDF Summarizer")
-root.iconbitmap(r'C:\Users\User\Desktop\prep\cv_projects\Project\p1\favicon.ico')
+root.iconbitmap(r'C:\Users\User\Desktop\favicon.ico')
 root.geometry('300x300')
 root.configure(bg='#192c3a')
 
